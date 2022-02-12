@@ -260,7 +260,7 @@ $(function() {
         repeat: true,
         fitToBackground: true,
         playerVars: {
-            modestbranding: 0,
+            modestbranding: 1,
             autoplay: 1,
             controls: 0,
             showinfo: 0,
