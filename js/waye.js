@@ -197,7 +197,9 @@ $(function() {
 		alert("3333");
             var r = $(this).serialize();
 		alert("4444");
-            $.post($(this).attr("action"), function() {
+		
+		
+            $.post($(this).attr("action"), r, function() {
 		    alert("88888");
                 $("form#form").slideUp("fast", function() {
 			alert("666666");
