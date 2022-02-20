@@ -41,8 +41,10 @@
 
 	//Отправление
 	if(!$mail->send()) {
+		echo '<script>alert("111111")</script>'
 		$message = 'Failed To Send The Message';
 	} else {
+		echo '<script>alert("222222")</script>'
 		$message = 'Message Was Sent Succesfully';
 	}
 
