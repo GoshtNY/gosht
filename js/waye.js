@@ -197,8 +197,8 @@ $(function() {
 		alert("3333");
             var r = $(this).serialize();
 		alert("4444");
-		//$(this).attr("action")
-            $.post("sendmail.php", function() {
+            $.post($(this).attr("action"), function() {
+		    alert("88888");
                 $("form#form").slideUp("fast", function() {
 			alert("666666");
                     $(this).before('<div class="success">Your email was sent successfully.</div>');
