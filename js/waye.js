@@ -190,14 +190,21 @@ $(function() {
                 }
             }), !s) {
             $("form#form input.submit").fadeOut("normal", function() {
+		    alert("11111");
                 $(this).parent().append("");
+		    alert("22222");
             });
+		alert("3333");
             var r = $(this).serialize();
+		alert("4444");
             $.post($(this).attr("action"), r, function() {
                 $("form#form").slideUp("fast", function() {
+			alert("666666");
                     $(this).before('<div class="success">Your email was sent successfully.</div>');
+			alert("77777");
                 });
             });
+		alert("55555");
         }
         return !1;
     });
