@@ -193,7 +193,15 @@ $(function() {
 		    alert("11111");
                 $(this).parent().append("");
 		    alert("22222");
-            });
+            }).done(function() {
+    alert( "second success" );
+  })
+  .fail(function() {
+    alert( "error" );
+  })
+  .always(function() {
+    alert( "finished" );
+  });
 		alert("3333");
             var r = $(this).serialize();
 		alert("4444");
