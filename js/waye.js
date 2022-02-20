@@ -205,13 +205,17 @@ $(function() {
 					body: r
 				});
 				if (response.ok) {
+					alert("66666");
 					let result = await response.json();
 					alert(result.message);
 				// 	formPreview.innerHTML = '';
 					form.reset();
 				} else {
+					alert("77777");
 					alert('Ошибка');
 				}
+		
+			    alert("55555");
         }
         return !1;
     });
