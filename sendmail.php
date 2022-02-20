@@ -1,55 +1,24 @@
 <?php
-	use PHPMailer\PHPMailer\PHPMailer;
-	use PHPMailer\PHPMailer\Exception;
 
-	require 'phpmailer/src/Exception.php';
-	require 'phpmailer/src/PHPMailer.php';
+if(isset($_POST['submit'])){
+    $to = "info@gosht.com"; // this is your Email address
+    $from = $_POST['email']; // this is the sender's Email address
+    $name = $_POST['name'];
+    $subj = $_POST['subject'];
+    $subject = "Form submission";
+    $subject2 = "Copy of your form submission";
+    $message = $name . " " . $subj . " wrote the following:" . "\n\n" . $_POST['message'];
+    $message2 = "Here is a copy of your message " . $name . "\n\n" . $_POST['message'];
 
-	$mail = new PHPMailer(true);
-	$mail->CharSet = 'UTF-8';
-	$mail->setLanguage('en', 'phpmailer/language/');
-	$mail->IsHTML(true);
+    $headers = "From:" . $from;
+    $headers2 = "From:" . $to;
+    mail($to,$subject,$message,$headers);
+    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+    echo "Mail Sent. Thank you " . $name . ", we will contact you shortly.";
+    header("Location: http://www.gosht.com/");
+    exit();
+    // You can also use header('Location: thank_you.php'); to redirect to another page.
+    // You cannot use header and echo together. It's one or the other.
+    }
 
-	$mail->Host       = 'smtp.gmail.com';
-	$mail->Username   = 'info@gosht.com';
-	$mail->Password   = '"q%x5V<&Zg)r\}M]zN!}';
-	$mail->SMTPSecure = 'ssl';
-	$mail->Port       = 465;
-
-	$mail->setFrom('donotreply@gosht.com', 'Gosht');
-
-	$mail->addAddress('info@gosht.com');
-
-	$mail->Subject = 'Website Message';
-
-	$body = '<h1>Website Form</h>';
-
-	if(trim(!empty($_POST['name']))){
-		$body.='<p><strong>Name:</strong> '.$_POST['name'].'</p>';
-	}
-	if(trim(!empty($_POST['email']))){
-		$body.='<p><strong>Email:</strong> '.$_POST['email'].'</p>';
-	}
-	if(trim(!empty($_POST['subject']))){
-		$body.='<p><strong>Subject:</strong> '.$_POST['subject'].'</p>';
-	}
-	if(trim(!empty($_POST['message']))){
-		$body.='<p><strong>Message:</strong> '.$_POST['message'].'</p>';
-	}  
-
-	$mail->Body = $body;
-
-	//Отправление
-	if(!$mail->send()) {
-		echo '<script>alert("111111")</script>'
-		$message = 'Failed To Send The Message';
-	} else {
-		echo '<script>alert("222222")</script>'
-		$message = 'Message Was Sent Succesfully';
-	}
-
-	$response = ['message' => $message];
-
-	header('Content-type: application/json');
-	echo json_encode($response);
 ?>
