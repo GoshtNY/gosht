@@ -196,9 +196,9 @@ $(function() {
 // 		    alert("22222");
 //             });
 		
-		alert("3333");
+// 		alert("3333");
             var r = $(this).serialize();
-		alert("4444");
+// 		alert("4444");
 
 			
 		const form = document.getElementById('form');
